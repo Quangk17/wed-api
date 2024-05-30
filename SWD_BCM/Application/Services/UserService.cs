@@ -26,10 +26,11 @@ namespace Application.Services
             List<AccountDTO> UserDTOs = new List<AccountDTO>();
             try
             {
-                var a = await _unitOfWork.AccountRepository.GetAccountsAsync();
+                var a = await _unitOfWork.AccountRepository.GetAllAsync(x => x.Role);
                 foreach (var ac in a)
                 {
                     var aaftermapper = _mapper.Map<AccountDTO>(ac);
+                    aaftermapper.roleName = ac.Role.RoleName;
                     UserDTOs.Add(aaftermapper);
                 }
                 if (UserDTOs.Count > 0)

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ilpORuVlOdE4dv+GdKghXnLyjqPQn2Kz506qK4Db4JglgbMKfCde2AZkZkBFxD/rE0iOUy7aqK7fWl/6K+8M1Q==",
+  "dgSpecHash": "vGAhZH8DS1ty4V0K8WMXR8o0H1kDKRknWTGVBBmw05J/GHXcTxHdiXW0JyS2XZU8ONUu+OHr7tiNiPKJWq8nyw==",
   "success": true,
-  "projectFilePath": "D:\\SWD392\\Git\\SWD392_BCM\\SWD_BCM\\Application\\Application.csproj",
+  "projectFilePath": "D:\\SWD392\\Git Backend\\wed-api\\SWD_BCM\\Application\\Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ROG\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\ROG\\.nuget\\packages\\mailkit\\3.2.0\\mailkit.3.2.0.nupkg.sha512",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ewt2xtARyRs5KIsgM2KbHf6+Z3Psi+dr7FpS84OuGKKKe51FmbTpnXfd8DUvXFOi+H+Fh4cpdH/qYRvaxUBq1g==",
+  "dgSpecHash": "0udHYh9cFgsq/NWBN+JhRkK9TAgWdtEUwsqwMzSDg7NccX2GXtCAK1eZQcVGsb5XtLn3FzOb1XyCcTHv2up+kg==",
   "success": true,
-  "projectFilePath": "D:\\SWD392\\Git\\SWD392_BCM\\SWD_BCM\\Infrastructures\\Infrastructures.csproj",
+  "projectFilePath": "D:\\SWD392\\Git Backend\\wed-api\\SWD_BCM\\Infrastructures\\Infrastructures.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ROG\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\ROG\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",

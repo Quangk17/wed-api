@@ -3,6 +3,7 @@ using Domain.Entites;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,8 +11,8 @@ namespace Application.Repositorys
 {
     public interface IGenericRepository<TEntity> where TEntity : BaseEntity
     {
-        Task<List<TEntity>> GetAllAsync();
-        Task<TEntity?> GetByIdAsync(int id);
+        Task<List<TEntity>> GetAllAsync(params Expression<Func<TEntity, object>>[] includes);
+        Task<TEntity?> GetByIdAsync(int id, params Expression<Func<TEntity, object>>[] includes);
         Task AddAsync(TEntity entity);
         void Update(TEntity entity);
         void UpdateRange(List<TEntity> entities);
