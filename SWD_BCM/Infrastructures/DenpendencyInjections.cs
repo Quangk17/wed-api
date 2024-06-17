@@ -17,7 +17,20 @@ namespace Infrastructures
         {
             services.AddScoped<IAccountRepository, AccountRepository>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
+
             services.AddScoped<IUserService, UserService>();
+
+            services.AddScoped<IBookingService, BookingService>();
+            services.AddScoped<IBookingRepository, BookingRepository>();
+
+            services.AddScoped<IBookingTypeService, BookingTypeService>();
+            services.AddScoped<IBookingTypeRepository, BookingTypeRepository>();
+
+            services.AddScoped<IInvoiceRepository, InvoiceRepository>();
+            services.AddScoped<IInvoiceService, InvoiceService>();
+
+            services.AddScoped<IBookingDetailRepository, BookingDetailRepository>();
+            services.AddScoped<IBookingDetailService, BookingDetailService>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddSingleton<ICurrentTime, CurrentTime>();
