@@ -5,6 +5,12 @@ using Application.Interfaces;
 using Application;
 using Infrastructures;
 using WebAPI.Service;
+using Infrastructures.Mappers;
+using Application.Services;
+using Application.Repositories;
+using Infrastructures.Repositories;
+using Application.Repositorys;
+using Domain.Entites;
 namespace WebAPI
 {
     public static class DependencyInjection
@@ -22,8 +28,23 @@ namespace WebAPI
             services.AddFluentValidationAutoValidation();
             services.AddFluentValidationClientsideAdapters();
             services.AddMemoryCache();
+            // infrastructure service
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped<IClaimsService, ClaimsService>();
+
+            // controller API  service
+            services.AddScoped<IRoleService, RoleService>();
+            services.AddScoped<IAuthenticationService, AuthenticationService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IStoreService, StoreService>();
+            services.AddScoped<ICourtService, CourtService>();
+
+            services.AddScoped<ISlotService, SlotService>();
+            services.AddScoped<IScheduleService, ScheduleService>();
+
+
+
+
+
             return services;
         }
 

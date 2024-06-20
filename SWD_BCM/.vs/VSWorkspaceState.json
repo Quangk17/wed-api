@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Infrastructures"
+    "\\Infrastructures",
+    "\\Infrastructures\\Migrations",
+    "\\WebAPI"
   ],
-  "SelectedNode": "\\Infrastructures\\Infrastructures.csproj",
+  "SelectedNode": "\\SWD_BCM.sln",
   "PreviewInSolutionExplorer": false
 }

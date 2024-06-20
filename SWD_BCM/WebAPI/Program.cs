@@ -6,11 +6,24 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
+using Application.Interfaces;
+using Application.Services;
+using FluentAssertions.Common;
+using WebAPI.Service;
 
 
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration.Get<AppConfiguration>() ?? new AppConfiguration();
+// CONNECT TO DATABASE
+builder.Services.AddDbContext<AppDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+//add infrastructure
+builder.Services.AddSingleton<ICurrentTime, CurrentTime>();
+builder.Services.AddSingleton<IClaimsService, ClaimServices>();
 // Add services to the container.
 builder.Services.AddInfrastructuresService(configuration.DatabaseConnection);
 builder.Services.AddWebAPIService();
@@ -64,6 +77,7 @@ builder.Services.AddSwaggerGen(setup =>
         { jwtSecurityScheme, Array.Empty<string>() }
     });
 });
+
 
 
 var app = builder.Build();

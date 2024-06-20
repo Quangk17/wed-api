@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\SWD392\\Git Backend\\wed-api\\SWD_BCM\\Domain\\Domain.csproj": {}
+    "D:\\C#_Learn\\Project\\wed-api\\SWD_BCM\\Domain\\Domain.csproj": {}
   },
   "projects": {
-    "D:\\SWD392\\Git Backend\\wed-api\\SWD_BCM\\Domain\\Domain.csproj": {
+    "D:\\C#_Learn\\Project\\wed-api\\SWD_BCM\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SWD392\\Git Backend\\wed-api\\SWD_BCM\\Domain\\Domain.csproj",
+        "projectUniqueName": "D:\\C#_Learn\\Project\\wed-api\\SWD_BCM\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "D:\\SWD392\\Git Backend\\wed-api\\SWD_BCM\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\ROG\\.nuget\\packages\\",
-        "outputPath": "D:\\SWD392\\Git Backend\\wed-api\\SWD_BCM\\Domain\\obj\\",
+        "projectPath": "D:\\C#_Learn\\Project\\wed-api\\SWD_BCM\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\quang\\.nuget\\packages\\",
+        "outputPath": "D:\\C#_Learn\\Project\\wed-api\\SWD_BCM\\Domain\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\ROG\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\quang\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -39,11 +35,42 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "FluentAssertions": {
+              "target": "Package",
+              "version": "[7.0.0-alpha.3, )"
+            },
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[11.2.2, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.5, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -60,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.106/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
