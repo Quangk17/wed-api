@@ -767,13 +767,6 @@ D:\SWD392\Git Backend\wed-api\SWD_BCM\WebAPI\obj\Debug\net8.0\refint\WebAPI.dll
 D:\SWD392\Git Backend\wed-api\SWD_BCM\WebAPI\obj\Debug\net8.0\WebAPI.pdb
 D:\SWD392\Git Backend\wed-api\SWD_BCM\WebAPI\obj\Debug\net8.0\WebAPI.genruntimeconfig.cache
 D:\SWD392\Git Backend\wed-api\SWD_BCM\WebAPI\obj\Debug\net8.0\ref\WebAPI.dll
-D:\C#_Learn\Project\wed-api\SWD_BCM\WebAPI\obj\Debug\net8.0\WebAPI.csproj.AssemblyReference.cache
-D:\C#_Learn\Project\wed-api\SWD_BCM\WebAPI\obj\Debug\net8.0\WebAPI.GeneratedMSBuildEditorConfig.editorconfig
-D:\C#_Learn\Project\wed-api\SWD_BCM\WebAPI\obj\Debug\net8.0\WebAPI.AssemblyInfoInputs.cache
-D:\C#_Learn\Project\wed-api\SWD_BCM\WebAPI\obj\Debug\net8.0\WebAPI.AssemblyInfo.cs
-D:\C#_Learn\Project\wed-api\SWD_BCM\WebAPI\obj\Debug\net8.0\WebAPI.csproj.CoreCompileInputs.cache
-D:\C#_Learn\Project\wed-api\SWD_BCM\WebAPI\obj\Debug\net8.0\WebAPI.MvcApplicationPartsAssemblyInfo.cache
-D:\C#_Learn\Project\wed-api\SWD_BCM\WebAPI\obj\Debug\net8.0\WebAPI.sourcelink.json
 D:\C#_Learn\Project\wed-api\SWD_BCM\WebAPI\bin\Debug\net8.0\appsettings.Development.json
 D:\C#_Learn\Project\wed-api\SWD_BCM\WebAPI\bin\Debug\net8.0\appsettings.json
 D:\C#_Learn\Project\wed-api\SWD_BCM\WebAPI\bin\Debug\net8.0\WebAPI.exe
@@ -908,7 +901,14 @@ D:\C#_Learn\Project\wed-api\SWD_BCM\WebAPI\bin\Debug\net8.0\Infrastructures.dll
 D:\C#_Learn\Project\wed-api\SWD_BCM\WebAPI\bin\Debug\net8.0\Infrastructures.pdb
 D:\C#_Learn\Project\wed-api\SWD_BCM\WebAPI\bin\Debug\net8.0\Application.pdb
 D:\C#_Learn\Project\wed-api\SWD_BCM\WebAPI\bin\Debug\net8.0\Domain.pdb
+D:\C#_Learn\Project\wed-api\SWD_BCM\WebAPI\obj\Debug\net8.0\WebAPI.csproj.AssemblyReference.cache
+D:\C#_Learn\Project\wed-api\SWD_BCM\WebAPI\obj\Debug\net8.0\WebAPI.GeneratedMSBuildEditorConfig.editorconfig
+D:\C#_Learn\Project\wed-api\SWD_BCM\WebAPI\obj\Debug\net8.0\WebAPI.AssemblyInfoInputs.cache
+D:\C#_Learn\Project\wed-api\SWD_BCM\WebAPI\obj\Debug\net8.0\WebAPI.AssemblyInfo.cs
+D:\C#_Learn\Project\wed-api\SWD_BCM\WebAPI\obj\Debug\net8.0\WebAPI.csproj.CoreCompileInputs.cache
 D:\C#_Learn\Project\wed-api\SWD_BCM\WebAPI\obj\Debug\net8.0\WebAPI.MvcApplicationPartsAssemblyInfo.cs
+D:\C#_Learn\Project\wed-api\SWD_BCM\WebAPI\obj\Debug\net8.0\WebAPI.MvcApplicationPartsAssemblyInfo.cache
+D:\C#_Learn\Project\wed-api\SWD_BCM\WebAPI\obj\Debug\net8.0\WebAPI.sourcelink.json
 D:\C#_Learn\Project\wed-api\SWD_BCM\WebAPI\obj\Debug\net8.0\staticwebassets.build.json
 D:\C#_Learn\Project\wed-api\SWD_BCM\WebAPI\obj\Debug\net8.0\staticwebassets.development.json
 D:\C#_Learn\Project\wed-api\SWD_BCM\WebAPI\obj\Debug\net8.0\staticwebassets\msbuild.WebAPI.Microsoft.AspNetCore.StaticWebAssets.props

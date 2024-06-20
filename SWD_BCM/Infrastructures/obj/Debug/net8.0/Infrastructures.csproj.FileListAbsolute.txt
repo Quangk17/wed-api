@@ -95,12 +95,6 @@ D:\SWD392\Git Backend\wed-api\SWD_BCM\Infrastructures\obj\Debug\net8.0\refint\In
 D:\SWD392\Git Backend\wed-api\SWD_BCM\Infrastructures\obj\Debug\net8.0\Infrastructures.pdb
 D:\SWD392\Git Backend\wed-api\SWD_BCM\Infrastructures\obj\Debug\net8.0\Infrastructures.genruntimeconfig.cache
 D:\SWD392\Git Backend\wed-api\SWD_BCM\Infrastructures\obj\Debug\net8.0\ref\Infrastructures.dll
-D:\C#_Learn\Project\wed-api\SWD_BCM\Infrastructures\obj\Debug\net8.0\Infrastructures.csproj.AssemblyReference.cache
-D:\C#_Learn\Project\wed-api\SWD_BCM\Infrastructures\obj\Debug\net8.0\Infrastructures.GeneratedMSBuildEditorConfig.editorconfig
-D:\C#_Learn\Project\wed-api\SWD_BCM\Infrastructures\obj\Debug\net8.0\Infrastructures.AssemblyInfoInputs.cache
-D:\C#_Learn\Project\wed-api\SWD_BCM\Infrastructures\obj\Debug\net8.0\Infrastructures.AssemblyInfo.cs
-D:\C#_Learn\Project\wed-api\SWD_BCM\Infrastructures\obj\Debug\net8.0\Infrastructures.csproj.CoreCompileInputs.cache
-D:\C#_Learn\Project\wed-api\SWD_BCM\Infrastructures\obj\Debug\net8.0\Infrastructures.sourcelink.json
 D:\C#_Learn\Project\wed-api\SWD_BCM\Infrastructures\bin\Debug\net8.0\Infrastructures.deps.json
 D:\C#_Learn\Project\wed-api\SWD_BCM\Infrastructures\bin\Debug\net8.0\Infrastructures.runtimeconfig.json
 D:\C#_Learn\Project\wed-api\SWD_BCM\Infrastructures\bin\Debug\net8.0\Infrastructures.dll
@@ -109,6 +103,12 @@ D:\C#_Learn\Project\wed-api\SWD_BCM\Infrastructures\bin\Debug\net8.0\Application
 D:\C#_Learn\Project\wed-api\SWD_BCM\Infrastructures\bin\Debug\net8.0\Domain.dll
 D:\C#_Learn\Project\wed-api\SWD_BCM\Infrastructures\bin\Debug\net8.0\Application.pdb
 D:\C#_Learn\Project\wed-api\SWD_BCM\Infrastructures\bin\Debug\net8.0\Domain.pdb
+D:\C#_Learn\Project\wed-api\SWD_BCM\Infrastructures\obj\Debug\net8.0\Infrastructures.csproj.AssemblyReference.cache
+D:\C#_Learn\Project\wed-api\SWD_BCM\Infrastructures\obj\Debug\net8.0\Infrastructures.GeneratedMSBuildEditorConfig.editorconfig
+D:\C#_Learn\Project\wed-api\SWD_BCM\Infrastructures\obj\Debug\net8.0\Infrastructures.AssemblyInfoInputs.cache
+D:\C#_Learn\Project\wed-api\SWD_BCM\Infrastructures\obj\Debug\net8.0\Infrastructures.AssemblyInfo.cs
+D:\C#_Learn\Project\wed-api\SWD_BCM\Infrastructures\obj\Debug\net8.0\Infrastructures.csproj.CoreCompileInputs.cache
+D:\C#_Learn\Project\wed-api\SWD_BCM\Infrastructures\obj\Debug\net8.0\Infrastructures.sourcelink.json
 D:\C#_Learn\Project\wed-api\SWD_BCM\Infrastructures\obj\Debug\net8.0\Infrastr.66371D1E.Up2Date
 D:\C#_Learn\Project\wed-api\SWD_BCM\Infrastructures\obj\Debug\net8.0\Infrastructures.dll
 D:\C#_Learn\Project\wed-api\SWD_BCM\Infrastructures\obj\Debug\net8.0\refint\Infrastructures.dll

@@ -37,10 +37,12 @@ namespace WebAPI
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IStoreService, StoreService>();
             services.AddScoped<ICourtService, CourtService>();
-
             services.AddScoped<ISlotService, SlotService>();
-            services.AddScoped<IScheduleService, ScheduleService>();
-
+            services.AddScoped<IScheduleService, ScheduleService>();          
+            services.AddScoped<IBookingService, BookingService>();
+            services.AddScoped<IBookingTypeService, BookingTypeService>();
+            services.AddScoped<IInvoiceService, InvoiceService>();
+            services.AddScoped<IBookingDetailService, BookingDetailService>();
 
 
 

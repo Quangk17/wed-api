@@ -22,7 +22,7 @@ namespace Application.Services
 
         public Task<ServiceResponse<BookingDetailViewDTO>> CreateBookingDetailAsync(BookingDetailCreateDTO createdto)
         {
-
+            throw new NotImplementedException();
         }
 
         public Task<ServiceResponse<BookingDetailViewDTO>> GetBookingDetailByIdAsync(int Id)

@@ -17,30 +17,7 @@ namespace Infrastructures
     {
         public static IServiceCollection AddInfrastructuresService(this IServiceCollection services, string databaseConnection)
         {
-<<<<<<< HEAD
-=======
-            services.AddScoped<IAccountRepository, AccountRepository>();
-            services.AddScoped<IAuthenticationService, AuthenticationService>();
 
-            services.AddScoped<IUserService, UserService>();
-
-            services.AddScoped<IBookingService, BookingService>();
-            services.AddScoped<IBookingRepository, BookingRepository>();
-
-            services.AddScoped<IBookingTypeService, BookingTypeService>();
-            services.AddScoped<IBookingTypeRepository, BookingTypeRepository>();
-
-            services.AddScoped<IInvoiceRepository, InvoiceRepository>();
-            services.AddScoped<IInvoiceService, InvoiceService>();
-
-            services.AddScoped<IBookingDetailRepository, BookingDetailRepository>();
-            services.AddScoped<IBookingDetailService, BookingDetailService>();
-
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddSingleton<ICurrentTime, CurrentTime>();
-
-
->>>>>>> d1d00f5fbf5b12f9ea15223702e3ebf0824a8210
             services.AddDbContext<AppDbContext>(option => option.UseSqlServer(databaseConnection));
 
             //add repositories injection
@@ -50,6 +27,11 @@ namespace Infrastructures
             services.AddScoped<ICourtRepository, CourtRepository>();
             services.AddScoped<ISlotRepository, SlotRepository>();
             services.AddScoped<IScheduleRepository, ScheduleRepository>();
+            services.AddScoped<IBookingRepository, BookingRepository>();
+            services.AddScoped<IBookingTypeRepository, BookingTypeRepository>();
+            services.AddScoped<IInvoiceRepository, InvoiceRepository>();
+            services.AddScoped<IBookingDetailRepository, BookingDetailRepository>();
+            
 
 
 
@@ -59,7 +41,12 @@ namespace Infrastructures
             services.AddScoped<IGenericRepository<User>, GenericRepository<User>>();
             services.AddScoped<IGenericRepository<Store>, GenericRepository<Store>>();
             services.AddScoped<IGenericRepository<Court>, GenericRepository<Court>>();
-
+            services.AddScoped<IGenericRepository<Booking>, GenericRepository<Booking>>();
+            services.AddScoped<IGenericRepository<BookingDetail>, GenericRepository<BookingDetail>>();
+            services.AddScoped<IGenericRepository<BookingType>, GenericRepository<BookingType>>();
+            services.AddScoped<IGenericRepository<CheckingStaff>, GenericRepository<CheckingStaff>>();
+            services.AddScoped<IGenericRepository<Invoice>, GenericRepository<Invoice>>();
+            services.AddScoped<IGenericRepository<Wallet>, GenericRepository<Wallet>>();
             services.AddScoped<IGenericRepository<Slot>, GenericRepository<Slot>>();
             services.AddScoped<IGenericRepository<Schedule>, GenericRepository<Schedule>>();
 
@@ -67,7 +54,8 @@ namespace Infrastructures
 
 
 
-
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddSingleton<ICurrentTime, CurrentTime>();
             services.AddAutoMapper(typeof(MapperConfigurationsProfile).Assembly);
             return services;
         }

@@ -1,16 +1,16 @@
 ﻿using Application.Commons;
 using Application.ViewModels.AccountDTOs;
-<<<<<<< HEAD
+
 using Application.ViewModels.CourtDTOs;
 using Application.ViewModels.RoleDTOs;
 using Application.ViewModels.ScheduleDTOs;
 using Application.ViewModels.SlotDTOs;
 using Application.ViewModels.StoreDTOs;
-=======
+
 using Application.ViewModels.BookingDTOs;
 using Application.ViewModels.BookingTypeDTOs;
 using Application.ViewModels.InvoiceDTOs;
->>>>>>> d1d00f5fbf5b12f9ea15223702e3ebf0824a8210
+
 using AutoMapper;
 using Domain.Entites;
 
