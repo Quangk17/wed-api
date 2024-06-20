@@ -17,6 +17,30 @@ namespace Infrastructures
     {
         public static IServiceCollection AddInfrastructuresService(this IServiceCollection services, string databaseConnection)
         {
+<<<<<<< HEAD
+=======
+            services.AddScoped<IAccountRepository, AccountRepository>();
+            services.AddScoped<IAuthenticationService, AuthenticationService>();
+
+            services.AddScoped<IUserService, UserService>();
+
+            services.AddScoped<IBookingService, BookingService>();
+            services.AddScoped<IBookingRepository, BookingRepository>();
+
+            services.AddScoped<IBookingTypeService, BookingTypeService>();
+            services.AddScoped<IBookingTypeRepository, BookingTypeRepository>();
+
+            services.AddScoped<IInvoiceRepository, InvoiceRepository>();
+            services.AddScoped<IInvoiceService, InvoiceService>();
+
+            services.AddScoped<IBookingDetailRepository, BookingDetailRepository>();
+            services.AddScoped<IBookingDetailService, BookingDetailService>();
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddSingleton<ICurrentTime, CurrentTime>();
+
+
+>>>>>>> d1d00f5fbf5b12f9ea15223702e3ebf0824a8210
             services.AddDbContext<AppDbContext>(option => option.UseSqlServer(databaseConnection));
 
             //add repositories injection

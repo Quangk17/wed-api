@@ -20,6 +20,69 @@ namespace Application.Services
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
+
+        public async Task<ServiceResponse<AccountDTO>> DeleteAccountAsync(int id)
+        {
+            var _response = new ServiceResponse<AccountDTO>();
+            var account = await _unitOfWork.AccountRepository.GetByIdAsync(id);
+
+            if (account != null)
+            {
+                _unitOfWork.AccountRepository.SoftRemove(account);
+
+                if (await _unitOfWork.SaveChangeAsync() > 0)
+                {
+                    _response.Data = _mapper.Map<AccountDTO>(account);
+                    _response.Success = true;
+                    _response.Message = "Deleted Account Successfully!";
+                }
+                else
+                {
+                    _response.Success = false;
+                    _response.Message = "Deleted Account Fail!";
+                }
+            }
+            else
+            {
+                _response.Success = false;
+                _response.Message = "account not found";
+            }
+
+            return _response;
+        }
+
+        public async Task<ServiceResponse<AccountDTO>> GetAccountByIdAsync(int id)
+        {
+            var _response = new ServiceResponse<AccountDTO>();
+
+
+            try
+            {
+                var account = await _unitOfWork.AccountRepository.GetByIdAsync(id);
+                if (account != null)
+                {
+                    var productDTO = _mapper.Map<AccountDTO>(account);
+
+
+                    _response.Data = productDTO;
+                    _response.Success = true;
+                    _response.Message = "Found Account By Id";
+                }
+                else
+                {
+                    _response.Success = false;
+                    _response.Message = "Don't Have Any Account ";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                _response.Success = false;
+                _response.ErrorMessages = new List<string> { ex.Message };
+            }
+            return _response;
+        }
+
         public async Task<ServiceResponse<List<AccountDTO>>> GetAccountsAsync()
         {
             var reponse = new ServiceResponse<List<AccountDTO>>();
@@ -56,6 +119,99 @@ namespace Application.Services
                 reponse.ErrorMessages = new List<string> { ex.Message };
                 return reponse;
             }
+        }
+
+        public async Task<ServiceResponse<List<AccountDTO>>> SearchAccountByNameAsync(string name)
+        {
+            var _response = new ServiceResponse<List<AccountDTO>>();
+            List<AccountDTO> accountDTOs = new List<AccountDTO>();
+
+            try
+            {
+                var accounts = await _unitOfWork.AccountRepository.GetAccountsAsync();
+                var accountFilter = accounts.Where(x => x.email.ToLower().Contains(name.ToLower()) 
+                                    || x.name.ToLower().Contains(name.ToLower()));
+                if (accountFilter != null )
+                {
+                    foreach (var a in accountFilter)
+                    {
+                        if(a.IsDeleted == false)
+                        {
+                            accountDTOs.Add(_mapper.Map<AccountDTO>(a));
+                        }
+                    }
+                    if (accountDTOs.Any() == true)
+                    {
+                        _response.Data = accountDTOs;
+                        _response.Success = true;
+                        _response.Message = "Found Account By Name";
+                    }
+                    else
+                    {
+                        _response.Success = false;
+                        _response.Message = "Not Found Account";
+                    }
+                }
+                else
+                {
+                    _response.Success = false;
+                    _response.Message = "Don't Have Any Account ";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                _response.Success = false;
+                _response.ErrorMessages = new List<string> { ex.Message };
+            }
+            return _response;
+        }
+
+        public async Task<ServiceResponse<AccountDTO>> UpdateAccountAsync(int id, AccountUpdateDTO updateDto)
+        {
+            var reponse = new ServiceResponse<AccountDTO>();
+
+            try
+            {
+                var accountById = await _unitOfWork.AccountRepository.GetByIdAsync(id);
+
+                if (accountById != null)
+                {
+                    var newAccount = _mapper.Map(updateDto, accountById);
+                    var accountAfter = _mapper.Map<User>(newAccount);
+                    _unitOfWork.AccountRepository.Update(newAccount);
+                    if (await _unitOfWork.SaveChangeAsync() > 0)
+                    {
+                        reponse.Success = true;
+                        reponse.Data = _mapper.Map<AccountDTO>(accountAfter);
+                        reponse.Message = $"Successfull for update account.";
+                        return reponse;
+                    }
+                    else
+                    {
+                        reponse.Success = false;
+                        reponse.Error = "Save update failed";
+                        return reponse;
+                    }
+
+                }
+                else
+                {
+                    reponse.Success = false;
+                    reponse.Message = $"Have no account.";
+                    reponse.Error = "Not have a account";
+                    return reponse;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                reponse.Success = false;
+                reponse.ErrorMessages = new List<string> { ex.Message };
+                return reponse;
+            }
+
+            return reponse;
         }
     }
 }
