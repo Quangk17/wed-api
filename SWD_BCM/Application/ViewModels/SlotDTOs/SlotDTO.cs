@@ -8,6 +8,7 @@ namespace Application.ViewModels.SlotDTOs
 {
     public class SlotDTO
     {
+        public int Id { get; set; }
         public string? name { get; set; }
         public DateTime startHours { get; set; }
         public DateTime endHours { get; set; }

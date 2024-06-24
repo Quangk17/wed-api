@@ -12,6 +12,7 @@ namespace Application.ViewModels.SlotDTOs
         public string? name { get; set; }
         public DateTime startHours { get; set; }
         public DateTime endHours { get; set; }
+        public bool IsDeleted { get; set; } = false;
 
         public virtual IEnumerable<Schedule> Schedules { get; set; }
     }

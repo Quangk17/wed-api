@@ -8,6 +8,7 @@ namespace Application.ViewModels.CourtDTOs
 {
     public class CourtDTO
     {
+        public int Id { get; set; }
         public string? Name { get; set; }
         public int? StoreID { get; set; }
         public int? SlotID { get; set; }

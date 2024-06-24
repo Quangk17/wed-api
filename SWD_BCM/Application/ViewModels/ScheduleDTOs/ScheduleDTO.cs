@@ -8,6 +8,7 @@ namespace Application.ViewModels.ScheduleDTOs
 {
     public class ScheduleDTO
     {
+        public int Id { get; set; }
         public float? price { get; set; }
         public bool? status { get; set; }
         public DateTime? date { get; set; }
