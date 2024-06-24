@@ -1,9 +1,11 @@
 ﻿using Application.Interfaces;
 using Application.ServiceResponses;
 using Application.ViewModels.CourtDTOs;
+using Application.ViewModels.InvoiceDTOs;
 using Application.ViewModels.RoleDTOs;
 using Application.ViewModels.ScheduleDTOs;
 using AutoMapper;
+using Domain.Entites;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,9 +28,38 @@ namespace Application.Services
             _mapper = mapper;
         }
 
-        public Task<ServiceResponse<CourtDTO>> CreateCourtAsync(CourtCreateDTO createdto)
+        public async Task<ServiceResponse<CourtDTO>> CreateCourtAsync(CourtCreateDTO createdto)
         {
-            throw new NotImplementedException();
+            var reponse = new ServiceResponse<CourtDTO>();
+
+            try
+            {
+                var entity = _mapper.Map<Court>(createdto);
+
+                await _unitOfWork.CourtRepository.AddAsync(entity);
+
+                if (await _unitOfWork.SaveChangeAsync() > 0)
+                {
+                    reponse.Data = _mapper.Map<CourtDTO>(entity);
+                    reponse.Success = true;
+                    reponse.Message = "Create new Court successfully";
+                    return reponse;
+                }
+                else
+                {
+                    reponse.Success = false;
+                    reponse.Message = "Create new Court fail";
+                    return reponse;
+                }
+            }
+            catch (Exception ex)
+            {
+                reponse.Success = false;
+                reponse.ErrorMessages = new List<string> { ex.Message };
+                return reponse;
+            }
+
+            return reponse;
         }
 
         public async Task<ServiceResponse<CourtDTO>> DeleteCourtAsync(int id)

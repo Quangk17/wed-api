@@ -1,9 +1,12 @@
 ﻿using Application.Interfaces;
 using Application.ServiceResponses;
 using Application.ViewModels.AccountDTOs;
+using Application.ViewModels.InvoiceDTOs;
 using Application.ViewModels.RoleDTOs;
 using Application.ViewModels.StoreDTOs;
 using AutoMapper;
+using Domain.Entites;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 
 namespace Application.Services
@@ -22,9 +25,38 @@ namespace Application.Services
             _mapper = mapper;
         }
 
-        public Task<ServiceResponse<StoreDTO>> CreateStoreAsync(StoreCreateDTO store)
+        public async Task<ServiceResponse<StoreDTO>> CreateStoreAsync(StoreCreateDTO store)
         {
-            throw new NotImplementedException();
+            var reponse = new ServiceResponse<StoreDTO>();
+
+            try
+            {
+                var entity = _mapper.Map<Store>(store);
+
+                await _unitOfWork.StoreRepository.AddAsync(entity);
+
+                if (await _unitOfWork.SaveChangeAsync() > 0)
+                {
+                    reponse.Data = _mapper.Map<StoreDTO>(entity);
+                    reponse.Success = true;
+                    reponse.Message = "Create new Store successfully";
+                    return reponse;
+                }
+                else
+                {
+                    reponse.Success = false;
+                    reponse.Message = "Create new Store fail";
+                    return reponse;
+                }
+            }
+            catch (Exception ex)
+            {
+                reponse.Success = false;
+                reponse.ErrorMessages = new List<string> { ex.Message };
+                return reponse;
+            }
+
+            return reponse;
         }
 
         public async Task<ServiceResponse<StoreDTO>> DeleteStoreAsync(int id)

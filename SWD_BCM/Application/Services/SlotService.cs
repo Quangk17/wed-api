@@ -1,8 +1,11 @@
 ﻿using Application.Interfaces;
 using Application.ServiceResponses;
 using Application.ViewModels.AccountDTOs;
+using Application.ViewModels.InvoiceDTOs;
 using Application.ViewModels.SlotDTOs;
 using AutoMapper;
+using Domain.Entites;
+using Microsoft.AspNetCore.Http.HttpResults;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,9 +28,38 @@ namespace Application.Services
             _mapper = mapper;
         }
 
-        public Task<ServiceResponse<SlotDTO>> CreateSlotsync(SlotCreateDTO slot)
+        public async Task<ServiceResponse<SlotDTO>> CreateSlotsync(SlotCreateDTO slot)
         {
-            throw new NotImplementedException();
+            var reponse = new ServiceResponse<SlotDTO>();
+
+            try
+            {
+                var entity = _mapper.Map<Slot>(slot);
+
+                await _unitOfWork.SlotRepository.AddAsync(entity);
+
+                if (await _unitOfWork.SaveChangeAsync() > 0)
+                {
+                    reponse.Data = _mapper.Map<SlotDTO>(entity);
+                    reponse.Success = true;
+                    reponse.Message = "Create new Slot successfully";
+                    return reponse;
+                }
+                else
+                {
+                    reponse.Success = false;
+                    reponse.Message = "Create new Slot fail";
+                    return reponse;
+                }
+            }
+            catch (Exception ex)
+            {
+                reponse.Success = false;
+                reponse.ErrorMessages = new List<string> { ex.Message };
+                return reponse;
+            }
+
+            return reponse;
         }
 
         public async Task<ServiceResponse<SlotDTO>> DeleteSlotAsync(int id)
