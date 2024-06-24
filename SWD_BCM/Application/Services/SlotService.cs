@@ -28,7 +28,7 @@ namespace Application.Services
             _mapper = mapper;
         }
 
-        public async Task<ServiceResponse<SlotDTO>> CreateSlotsync(SlotCreateDTO slot)
+        public async Task<ServiceResponse<SlotDTO>> CreateSlotAsync(SlotCreateDTO slot)
         {
             var reponse = new ServiceResponse<SlotDTO>();
 

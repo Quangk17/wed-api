@@ -17,6 +17,6 @@ namespace Application.Interfaces
         Task<ServiceResponse<List<SlotDTO>>> SearchSlotByNameAsync(string name);
         Task<ServiceResponse<SlotDTO>> DeleteSlotAsync(int id);
         Task<ServiceResponse<SlotDTO>> UpdateSlotAsync(int id, SlotUpdateDTO updateDto);
-        Task<ServiceResponse<SlotDTO>> CreateSlotsync(SlotCreateDTO slot);
+        Task<ServiceResponse<SlotDTO>> CreateSlotAsync(SlotCreateDTO slot);
     }
 }
