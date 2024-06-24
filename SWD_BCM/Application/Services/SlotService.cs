@@ -25,6 +25,46 @@ namespace Application.Services
             _mapper = mapper;
         }
 
+        public Task<ServiceResponse<SlotDTO>> CreateSlotsync(SlotCreateDTO slot)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<ServiceResponse<SlotDTO>> DeleteSlotAsync(int id)
+        {
+            var _response = new ServiceResponse<SlotDTO>();
+            var slot = await _unitOfWork.SlotRepository.GetByIdAsync(id);
+
+            if (slot != null)
+            {
+                _unitOfWork.SlotRepository.SoftRemove(slot);
+
+                if (await _unitOfWork.SaveChangeAsync() > 0)
+                {
+                    _response.Data = _mapper.Map<SlotDTO>(slot);
+                    _response.Success = true;
+                    _response.Message = "Deleted Slot Successfully!";
+                }
+                else
+                {
+                    _response.Success = false;
+                    _response.Message = "Deleted Slot Fail!";
+                }
+            }
+            else
+            {
+                _response.Success = false;
+                _response.Message = "Slot not found";
+            }
+
+            return _response;
+        }
+
+        public Task<ServiceResponse<SlotDTO>> GetSlotByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<ServiceResponse<List<SlotDTO>>> GetSlotsAsync()
         {
             var reponse = new ServiceResponse<List<SlotDTO>>();
@@ -61,6 +101,16 @@ namespace Application.Services
                 reponse.ErrorMessages = new List<string> { ex.Message };
                 return reponse;
             }
+        }
+
+        public Task<ServiceResponse<List<SlotDTO>>> SearchSlotByNameAsync(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ServiceResponse<SlotDTO>> UpdateSlotAsync(int id, SlotUpdateDTO updateDto)
+        {
+            throw new NotImplementedException();
         }
     }
 }

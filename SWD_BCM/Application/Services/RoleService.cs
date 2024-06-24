@@ -26,6 +26,41 @@ namespace Application.Services
             _mapper = mapper;
         }
 
+        public Task<ServiceResponse<RoleDTO>> CreateRoleAsync(RoleCreateDTO role)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<ServiceResponse<RoleDTO>> DeleteRoleAsync(int id)
+        {
+            var _response = new ServiceResponse<RoleDTO>();
+            var role = await _unitOfWork.RoleRepository.GetByIdAsync(id);
+
+            if (role != null)
+            {
+                _unitOfWork.RoleRepository.SoftRemove(role);
+
+                if (await _unitOfWork.SaveChangeAsync() > 0)
+                {
+                    _response.Data = _mapper.Map<RoleDTO>(role);
+                    _response.Success = true;
+                    _response.Message = "Deleted Role Successfully!";
+                }
+                else
+                {
+                    _response.Success = false;
+                    _response.Message = "Deleted Role Fail!";
+                }
+            }
+            else
+            {
+                _response.Success = false;
+                _response.Message = "Role not found";
+            }
+
+            return _response;
+        }
+
         public async Task<ServiceResponse<List<RoleDTO>>> GetRolesAsync()
         {
             var response = new ServiceResponse<List<RoleDTO>>();
@@ -63,6 +98,20 @@ namespace Application.Services
             return response;
         }
 
+        public Task<ServiceResponse<RoleDTO>> GetSRoleByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ServiceResponse<List<RoleDTO>>> SearchRoleByNameAsync(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ServiceResponse<RoleDTO>> UpdateRoleAsync(int id, RoleUpdateDTO updateDto)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

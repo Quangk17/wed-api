@@ -2,6 +2,7 @@
 using Application.ServiceResponses;
 using Application.ViewModels.RoleDTOs;
 using Application.ViewModels.ScheduleDTOs;
+using Application.ViewModels.SlotDTOs;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,46 @@ namespace Application.Services
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+        }
+
+        public Task<ServiceResponse<ScheduleDTO>> CreateScheduleAsync(ScheduleCreateDTO schedule)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<ServiceResponse<ScheduleDTO>> DeleteScheduleAsync(int id)
+        {
+            var _response = new ServiceResponse<ScheduleDTO>();
+            var schedule = await _unitOfWork.ScheduleRepository.GetByIdAsync(id);
+
+            if (schedule != null)
+            {
+                _unitOfWork.ScheduleRepository.SoftRemove(schedule);
+
+                if (await _unitOfWork.SaveChangeAsync() > 0)
+                {
+                    _response.Data = _mapper.Map<ScheduleDTO>(schedule);
+                    _response.Success = true;
+                    _response.Message = "Deleted Schedule Successfully!";
+                }
+                else
+                {
+                    _response.Success = false;
+                    _response.Message = "Deleted Schedule Fail!";
+                }
+            }
+            else
+            {
+                _response.Success = false;
+                _response.Message = "Schedule not found";
+            }
+
+            return _response;
+        }
+
+        public Task<ServiceResponse<ScheduleDTO>> GetScheduleByIdAsync(int id)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<ServiceResponse<List<ScheduleDTO>>> GetSchedulesAsync()
@@ -60,6 +101,16 @@ namespace Application.Services
                 response.ErrorMessages = new List<string> { ex.Message };
             }
             return response;
+        }
+
+        public Task<ServiceResponse<List<ScheduleDTO>>> SearchScheduleByNameAsync(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ServiceResponse<ScheduleDTO>> UpdateScheduleAsync(int id, ScheduleUpdateDTO updateDto)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -2,6 +2,7 @@
 using Application.ServiceResponses;
 using Application.ViewModels.CourtDTOs;
 using Application.ViewModels.RoleDTOs;
+using Application.ViewModels.ScheduleDTOs;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,46 @@ namespace Application.Services
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+        }
+
+        public Task<ServiceResponse<CourtDTO>> CreateCourtAsync(CourtCreateDTO createdto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<ServiceResponse<CourtDTO>> DeleteCourtAsync(int id)
+        {
+            var _response = new ServiceResponse<CourtDTO>();
+            var court = await _unitOfWork.CourtRepository.GetByIdAsync(id);
+
+            if (court != null)
+            {
+                _unitOfWork.CourtRepository.SoftRemove(court);
+
+                if (await _unitOfWork.SaveChangeAsync() > 0)
+                {
+                    _response.Data = _mapper.Map<CourtDTO>(court);
+                    _response.Success = true;
+                    _response.Message = "Deleted Court Successfully!";
+                }
+                else
+                {
+                    _response.Success = false;
+                    _response.Message = "Deleted Court Fail!";
+                }
+            }
+            else
+            {
+                _response.Success = false;
+                _response.Message = "Court not found";
+            }
+
+            return _response;
+        }
+
+        public Task<ServiceResponse<CourtDTO>> GetCourtByIdAsync(int id)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<ServiceResponse<List<CourtDTO>>> GetCourtsAsync()
@@ -62,5 +103,10 @@ namespace Application.Services
             return response;
         
     }
+
+        public Task<ServiceResponse<CourtDTO>> UpdateCourtAsync(int id, CourtUpdateDTO updatedto)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
