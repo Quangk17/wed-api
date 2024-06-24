@@ -1,6 +1,7 @@
 ﻿using Application.Interfaces;
 using Application.ServiceResponses;
 using Application.ViewModels.CourtDTOs;
+using Application.ViewModels.InvoiceDTOs;
 using Application.ViewModels.RoleDTOs;
 using Application.ViewModels.ScheduleDTOs;
 using Application.ViewModels.SlotDTOs;
@@ -140,9 +141,51 @@ namespace Application.Services
             throw new NotImplementedException();
         }
 
-        public Task<ServiceResponse<ScheduleDTO>> UpdateScheduleAsync(int id, ScheduleUpdateDTO updateDto)
+        public async Task<ServiceResponse<ScheduleDTO>> UpdateScheduleAsync(int id, ScheduleUpdateDTO updateDto)
         {
-            throw new NotImplementedException();
+            var reponse = new ServiceResponse<ScheduleDTO>();
+
+            try
+            {
+                var enityById = await _unitOfWork.ScheduleRepository.GetByIdAsync(id);
+
+                if (enityById != null)
+                {
+                    var newb = _mapper.Map(updateDto, enityById);
+                    var bAfter = _mapper.Map<Schedule>(newb);
+                    _unitOfWork.ScheduleRepository.Update(bAfter);
+                    if (await _unitOfWork.SaveChangeAsync() > 0)
+                    {
+                        reponse.Success = true;
+                        reponse.Data = _mapper.Map<ScheduleDTO>(bAfter);
+                        reponse.Message = $"Successfull for update Schedule.";
+                        return reponse;
+                    }
+                    else
+                    {
+                        reponse.Success = false;
+                        reponse.Error = "Save update failed";
+                        return reponse;
+                    }
+
+                }
+                else
+                {
+                    reponse.Success = false;
+                    reponse.Message = $"Have no Schedule.";
+                    reponse.Error = "Not have a Schedule";
+                    return reponse;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                reponse.Success = false;
+                reponse.ErrorMessages = new List<string> { ex.Message };
+                return reponse;
+            }
+
+            return reponse;
         }
     }
 }

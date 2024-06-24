@@ -135,9 +135,51 @@ namespace Application.Services
         
     }
 
-        public Task<ServiceResponse<CourtDTO>> UpdateCourtAsync(int id, CourtUpdateDTO updatedto)
+        public async Task<ServiceResponse<CourtDTO>> UpdateCourtAsync(int id, CourtUpdateDTO updatedto)
         {
-            throw new NotImplementedException();
+            var reponse = new ServiceResponse<CourtDTO>();
+
+            try
+            {
+                var enityById = await _unitOfWork.CourtRepository.GetByIdAsync(id);
+
+                if (enityById != null)
+                {
+                    var newb = _mapper.Map(updatedto, enityById);
+                    var bAfter = _mapper.Map<Court>(newb);
+                    _unitOfWork.CourtRepository.Update(bAfter);
+                    if (await _unitOfWork.SaveChangeAsync() > 0)
+                    {
+                        reponse.Success = true;
+                        reponse.Data = _mapper.Map<CourtDTO>(bAfter);
+                        reponse.Message = $"Successfull for update Court.";
+                        return reponse;
+                    }
+                    else
+                    {
+                        reponse.Success = false;
+                        reponse.Error = "Save update failed";
+                        return reponse;
+                    }
+
+                }
+                else
+                {
+                    reponse.Success = false;
+                    reponse.Message = $"Have no Court.";
+                    reponse.Error = "Not have a Court";
+                    return reponse;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                reponse.Success = false;
+                reponse.ErrorMessages = new List<string> { ex.Message };
+                return reponse;
+            }
+
+            return reponse;
         }
     }
 }

@@ -137,9 +137,51 @@ namespace Application.Services
             throw new NotImplementedException();
         }
 
-        public Task<ServiceResponse<StoreDTO>> UpdateStoreAsync(int id, StoreUpdateDTO updateDto)
+        public async Task<ServiceResponse<StoreDTO>> UpdateStoreAsync(int id, StoreUpdateDTO updateDto)
         {
-            throw new NotImplementedException();
+            var reponse = new ServiceResponse<StoreDTO>();
+
+            try
+            {
+                var enityById = await _unitOfWork.StoreRepository.GetByIdAsync(id);
+
+                if (enityById != null)
+                {
+                    var newb = _mapper.Map(updateDto, enityById);
+                    var bAfter = _mapper.Map<Store>(newb);
+                    _unitOfWork.StoreRepository.Update(bAfter);
+                    if (await _unitOfWork.SaveChangeAsync() > 0)
+                    {
+                        reponse.Success = true;
+                        reponse.Data = _mapper.Map<StoreDTO>(bAfter);
+                        reponse.Message = $"Successfull for update Store.";
+                        return reponse;
+                    }
+                    else
+                    {
+                        reponse.Success = false;
+                        reponse.Error = "Save update failed";
+                        return reponse;
+                    }
+
+                }
+                else
+                {
+                    reponse.Success = false;
+                    reponse.Message = $"Have no Store.";
+                    reponse.Error = "Not have a Store";
+                    return reponse;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                reponse.Success = false;
+                reponse.ErrorMessages = new List<string> { ex.Message };
+                return reponse;
+            }
+
+            return reponse;
         }
     }
 }

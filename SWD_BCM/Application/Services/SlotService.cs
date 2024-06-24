@@ -140,9 +140,51 @@ namespace Application.Services
             throw new NotImplementedException();
         }
 
-        public Task<ServiceResponse<SlotDTO>> UpdateSlotAsync(int id, SlotUpdateDTO updateDto)
+        public async Task<ServiceResponse<SlotDTO>> UpdateSlotAsync(int id, SlotUpdateDTO updateDto)
         {
-            throw new NotImplementedException();
+            var reponse = new ServiceResponse<SlotDTO>();
+
+            try
+            {
+                var enityById = await _unitOfWork.SlotRepository.GetByIdAsync(id);
+
+                if (enityById != null)
+                {
+                    var newb = _mapper.Map(updateDto, enityById);
+                    var bAfter = _mapper.Map<Slot>(newb);
+                    _unitOfWork.SlotRepository.Update(bAfter);
+                    if (await _unitOfWork.SaveChangeAsync() > 0)
+                    {
+                        reponse.Success = true;
+                        reponse.Data = _mapper.Map<SlotDTO>(bAfter);
+                        reponse.Message = $"Successfull for update Slot.";
+                        return reponse;
+                    }
+                    else
+                    {
+                        reponse.Success = false;
+                        reponse.Error = "Save update failed";
+                        return reponse;
+                    }
+
+                }
+                else
+                {
+                    reponse.Success = false;
+                    reponse.Message = $"Have no Slot.";
+                    reponse.Error = "Not have a Slot";
+                    return reponse;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                reponse.Success = false;
+                reponse.ErrorMessages = new List<string> { ex.Message };
+                return reponse;
+            }
+
+            return reponse;
         }
     }
 }
