@@ -49,7 +49,28 @@ namespace Infrastructures.Mappers
             CreateMap<Schedule, ScheduleDTO>().ReverseMap();
 
             CreateMap(typeof(Pagination<>), typeof(Pagination<>));
-            
+
+            // mapping createdto
+            CreateMap<RoleCreateDTO, Role>().ReverseMap();
+            CreateMap<StoreCreateDTO, Store>().ReverseMap();
+            CreateMap<CourtCreateDTO, Court>().ReverseMap();
+            CreateMap<ScheduleCreateDTO, Schedule>().ReverseMap();
+            CreateMap<SlotCreateDTO, Slot>().ReverseMap();
+
+            //  mapping updatedto
+            CreateMap<RoleUpdateDTO, Role>().ReverseMap();
+            CreateMap<StoreUpdateDTO, Store>().ReverseMap();
+            CreateMap<CourtUpdateDTO, Court>().ReverseMap();
+            CreateMap<ScheduleUpdateDTO, Schedule>().ReverseMap();
+            CreateMap<SlotUpdateDTO, Slot>().ReverseMap();
+
+
+
+
+
+
+
+
         }
 
     }
