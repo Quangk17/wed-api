@@ -14,7 +14,7 @@ namespace Application.ViewModels.StoreDTOs
         public string? address { get; set; }
         public bool? status { get; set; }
         public DateTime? timeActive { get; set; }
-        public bool IsDeleted { get; set; }
+        public bool IsDeleted { get; set; } = false;
         public int userId { get; set; }
 
     }

@@ -8,7 +8,7 @@ namespace Application.ViewModels.RoleDTOs
 {
     public class RoleCreateDTO
     {
-        public bool IsDeleted { get; set; }
+        public bool IsDeleted { get; set; } = false;
 
         public string? RoleName { get; set; } = null;
     }

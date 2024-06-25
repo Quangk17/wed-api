@@ -37,7 +37,7 @@ namespace Infrastructures.Mappers
             CreateMap<Invoice, InvoiceViewDTO>().ReverseMap();
             CreateMap<Invoice, InvoiceCreateDTO>().ReverseMap();
             CreateMap<Invoice, InvoiceUpdateDTO>().ReverseMap();
-
+            // mapping viewdto
             CreateMap<Role, RoleDTO>().ReverseMap();
 
             CreateMap<Store, StoreDTO>().ReverseMap();
