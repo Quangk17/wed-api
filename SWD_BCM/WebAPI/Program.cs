@@ -23,7 +23,7 @@ builder.Services.AddCors(options =>
         builder.AllowAnyHeader()
                .AllowCredentials()
                .AllowAnyMethod()
-               .WithOrigins("https://localhost:7017");
+               .WithOrigins("http://localhost:3000");
     });
 });
 var configuration = builder.Configuration.Get<AppConfiguration>() ?? new AppConfiguration();
@@ -92,7 +92,7 @@ builder.Services.AddSwaggerGen(setup =>
 
 
 var app = builder.Build();
-
+app.UseCors("AllowLocalhost3000");
 app.UseMiddleware<GlobalExceptionMiddleware>();
 app.UseMiddleware<PerformanceMiddleware>();
 app.UseMiddleware<ConfirmationTokenMiddleware>();
@@ -105,7 +105,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseCors("AllowLocalhost3000");
+
 app.UseAuthentication();
 app.UseAuthorization();
 // Sử dụng CORS
