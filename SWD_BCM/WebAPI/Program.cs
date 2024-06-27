@@ -1,4 +1,4 @@
-using Infrastructures;
+﻿using Infrastructures;
 using WebAPI.Middlewares;
 using WebAPI;
 using Application.Commons;
@@ -15,6 +15,17 @@ using WebAPI.Service;
 
 
 var builder = WebApplication.CreateBuilder(args);
+// Cấu hình dịch vụ CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowLocalhost3000", builder =>
+    {
+        builder.AllowAnyHeader()
+               .AllowCredentials()
+               .AllowAnyMethod()
+               .WithOrigins("https://localhost:7017");
+    });
+});
 var configuration = builder.Configuration.Get<AppConfiguration>() ?? new AppConfiguration();
 // CONNECT TO DATABASE
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -94,9 +105,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors("AllowLocalhost3000");
 app.UseAuthentication();
 app.UseAuthorization();
+// Sử dụng CORS
 
 
 app.MapControllers();

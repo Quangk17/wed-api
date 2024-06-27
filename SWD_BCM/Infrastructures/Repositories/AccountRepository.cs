@@ -18,16 +18,21 @@ namespace Infrastructures.Repositories
             _dbContext = context;
         }
 
-        public  Task<bool> CheckEmailNameExited(string email) =>  _dbContext.Users.AnyAsync(u => u.email == email);
-        
+        public Task<User> CheckEmailNameExisted(string email) => _dbContext.Users.FirstOrDefaultAsync(u => u.email == email);
 
 
-        public Task<bool> CheckPhoneNumberExited(string phonenumber) =>
+
+        public Task<bool> CheckPhoneNumberExisted(string phonenumber) =>
                                                 _dbContext.Users.AnyAsync(u => u.phoneNumber == phonenumber);
 
         public async Task<IEnumerable<User>> GetAccountsAsync()
         {
             return await _dbContext.Users.ToListAsync();
+        }
+
+        public async Task<Role> GetRoleNameByRoleId(int RoleId)
+        {
+            return await _dbContext.Roles.FirstOrDefaultAsync(x => x.Id == RoleId);
         }
 
         public Task<IEnumerable<User>> GetSortedAccountAsync()
@@ -41,7 +46,7 @@ namespace Infrastructures.Repositories
             {
                 throw new InvalidOperationException("DbContext is not initialized.");
             }
-            var users =  _dbContext.Users.ToList();
+            var users = _dbContext.Users.ToList();
             Console.WriteLine(users);
             var user = await _dbContext.Users.SingleOrDefaultAsync(u => u.ConfirmationToken == token);
 

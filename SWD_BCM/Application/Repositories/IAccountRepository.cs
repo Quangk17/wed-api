@@ -11,14 +11,16 @@ namespace Application.Repositories
     {
         Task<User> GetUserByEmailAndPasswordHash(string email, string passwordHash);
 
-        Task<bool> CheckEmailNameExited(string username);
-        Task<bool> CheckPhoneNumberExited(string phonenumber);
+        Task<User> CheckEmailNameExisted(string email);
+        Task<bool> CheckPhoneNumberExisted(string phonenumber);
 
         Task<User> GetUserByConfirmationToken(string token);
         Task<IEnumerable<User>> SearchAccountByNameAsync(string name);
         Task<IEnumerable<User>> GetAccountsAsync();
-        Task<IEnumerable<User>> SearchAccountByRoleNameAsync(string rolName);
+        Task<IEnumerable<User>> SearchAccountByRoleNameAsync(string roleName);
         Task<IEnumerable<User>> GetSortedAccountAsync();
+        Task<Role> GetRoleNameByRoleId(int RoleId);
+
 
 
     }
