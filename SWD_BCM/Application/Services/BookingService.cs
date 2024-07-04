@@ -5,6 +5,8 @@ using Application.ViewModels.BookingDTOs;
 using Application.ViewModels.InvoiceDTOs;
 using AutoMapper;
 using Domain.Entites;
+using Domain.Enums;
+using Microsoft.AspNetCore.Http.HttpResults;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -80,6 +82,88 @@ namespace Application.Services
 
             try
             {
+
+
+                var entity = _mapper.Map<Booking>(createdto);
+
+                await _unitOfWork.BookingRepository.AddAsync(entity);
+
+                if (await _unitOfWork.SaveChangeAsync() > 0)
+                {
+                    Booking entityAfterAdd = await _unitOfWork.BookingRepository.GetByIdAsync(entity.Id, x => x.User, x => x.BookingType);
+
+                    if (entityAfterAdd != null)
+                    {
+                        var mapperdto = _mapper.Map<BookingViewDTO>(entityAfterAdd);
+                        mapperdto.UserName = entityAfterAdd.User?.name;
+                        mapperdto.BookingTypeName = entityAfterAdd.BookingType?.name;
+
+                        response.Data = mapperdto;
+                        response.Success = true;
+                        response.Message = "Created new booking successfully";
+                    }
+                    else
+                    {
+                        response.Success = false;
+                        response.Message = "Booking created but not found in the database.";
+                        response.Error = "Booking retrieval failed.";
+                    }
+                }
+                else
+                {
+                    response.Success = false;
+                    response.Message = "Failed to create new booking.";
+                    response.Error = "Database save failed.";
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = "An error occurred while creating the booking.";
+                response.ErrorMessages = new List<string> { ex.Message };
+            }
+
+            return response;
+        }
+
+        private bool checkScheduleIsBooking(int ScheduleId) 
+        {
+            return true;
+        }
+
+        private bool Validate(BookingCreateDTO createdto)
+        {
+            bool flag = true;
+            if(createdto == null)
+            { 
+                flag = false;
+            }
+            //else if(_unitOfWork createdto.BookingDetailParentCreateDTO.scheduleID) {
+
+            //}
+
+            return true;
+        }
+
+        public async Task<ServiceResponse<BookingViewDTO>> CreateBookingAsync(BookingCreateDTO createdto, int bookingTypeId)
+        {
+            var response = new ServiceResponse<BookingViewDTO>();
+
+            try
+            {
+                var bookingType = _unitOfWork.BookingTypeRepository.GetByIdAsync(bookingTypeId);
+                if (bookingType.Equals(BookingTypeEnum.Permanent))
+                {
+                    
+                }
+                if (bookingType.Equals(BookingTypeEnum.Daily))
+                {
+
+                }
+                if (bookingType.Equals(BookingTypeEnum.Flexible))
+                {
+
+                }
                 var entity = _mapper.Map<Booking>(createdto);
 
                 await _unitOfWork.BookingRepository.AddAsync(entity);

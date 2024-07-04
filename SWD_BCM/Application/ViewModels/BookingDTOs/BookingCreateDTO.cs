@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Application.ViewModels.BookingDetailDTOs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,5 +16,8 @@ namespace Application.ViewModels.BookingDTOs
         public float? TotalPrice { get; set; }
         public int? UserID { get; set; }
         public int? BookingTypeID { get; set; }
+
+        public virtual BookingDetailParentCreateDTO BookingDetailParentCreateDTO { get; set; }
+       
     }
 }
