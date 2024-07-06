@@ -1576,35 +1576,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\quang\\.nuget\\packages\\": {}
+    "C:\\Users\\PC\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\C#_Learn\\Project\\wed-api\\SWD_BCM\\Application\\Application.csproj",
+      "projectUniqueName": "D:\\FPT\\SWD_BCM\\Application\\Application.csproj",
       "projectName": "Application",
-      "projectPath": "D:\\C#_Learn\\Project\\wed-api\\SWD_BCM\\Application\\Application.csproj",
-      "packagesPath": "C:\\Users\\quang\\.nuget\\packages\\",
-      "outputPath": "D:\\C#_Learn\\Project\\wed-api\\SWD_BCM\\Application\\obj\\",
+      "projectPath": "D:\\FPT\\SWD_BCM\\Application\\Application.csproj",
+      "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+      "outputPath": "D:\\FPT\\SWD_BCM\\Application\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\quang\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\C#_Learn\\Project\\wed-api\\SWD_BCM\\Domain\\Domain.csproj": {
-              "projectPath": "D:\\C#_Learn\\Project\\wed-api\\SWD_BCM\\Domain\\Domain.csproj"
+            "D:\\FPT\\SWD_BCM\\Domain\\Domain.csproj": {
+              "projectPath": "D:\\FPT\\SWD_BCM\\Domain\\Domain.csproj"
             }
           }
         }
@@ -1613,11 +1610,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -1664,12 +1656,18 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[8.0.5, 8.0.5]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
