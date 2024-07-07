@@ -24,7 +24,7 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
 
-        [Authorize (Roles = "Manager")]
+       // [Authorize (Roles = "Manager")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -43,7 +43,7 @@ namespace WebAPI.Controllers
             return Ok(c);
         }
 
-        [Authorize(Roles = "Manager")]
+       // [Authorize(Roles = "Manager")]
         [HttpPut("{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -57,7 +57,7 @@ namespace WebAPI.Controllers
             return Ok(c);
         }
 
-        [Authorize(Roles = "Manager, Customer")]
+      //  [Authorize(Roles = "Manager, Customer")]
         [HttpDelete("{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
