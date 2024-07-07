@@ -1,6 +1,7 @@
 ﻿using Application.Interfaces;
 using Application.ServiceResponses;
 using Application.ViewModels.AccountDTOs;
+using Application.ViewModels.BookingDetailDTOs;
 using Application.ViewModels.BookingDTOs;
 using Application.ViewModels.InvoiceDTOs;
 using AutoMapper;
@@ -76,101 +77,139 @@ namespace Application.Services
             return reponse;
         }
 
+        //public async Task<ServiceResponse<BookingViewDTO>> CreateBookingAsync(BookingCreateDTO createdto)
+        //{
+        //    var response = new ServiceResponse<BookingViewDTO>();
+
+        //    try
+        //    {
+
+
+        //        var entity = _mapper.Map<Booking>(createdto);
+
+        //        await _unitOfWork.BookingRepository.AddAsync(entity);
+
+        //        if (await _unitOfWork.SaveChangeAsync() > 0)
+        //        {
+        //            Booking entityAfterAdd = await _unitOfWork.BookingRepository.GetByIdAsync(entity.Id, x => x.User, x => x.BookingType);
+
+        //            if (entityAfterAdd != null)
+        //            {
+        //                var mapperdto = _mapper.Map<BookingViewDTO>(entityAfterAdd);
+        //                mapperdto.UserName = entityAfterAdd.User?.name;
+        //                mapperdto.BookingTypeName = entityAfterAdd.BookingType?.name;
+
+        //                response.Data = mapperdto;
+        //                response.Success = true;
+        //                response.Message = "Created new booking successfully";
+        //            }
+        //            else
+        //            {
+        //                response.Success = false;
+        //                response.Message = "Booking created but not found in the database.";
+        //                response.Error = "Booking retrieval failed.";
+        //            }
+        //        }
+        //        else
+        //        {
+        //            response.Success = false;
+        //            response.Message = "Failed to create new booking.";
+        //            response.Error = "Database save failed.";
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        response.Success = false;
+        //        response.Message = "An error occurred while creating the booking.";
+        //        response.ErrorMessages = new List<string> { ex.Message };
+        //    }
+
+        //    return response;
+        //}
+
+        //private bool checkScheduleIsBooking(int ScheduleId) 
+        //{
+        //    return true;
+        //}
+
+        //private async Task<bool> Validate(BookingCreateDTO createdto)
+        //{
+        //    if (createdto == null || createdto.BookingDetailParentCreateDTO == null || createdto.BookingDetailParentCreateDTO.scheduleID == null)
+        //    {
+        //        return false;
+        //    }
+
+        //    int scheduleId = createdto.BookingDetailParentCreateDTO.scheduleID.GetValueOrDefault();
+
+        //    var scheduleExists = await _unitOfWork.ScheduleRepository.GetByIdAsync(scheduleId);
+        //    if(scheduleExists.status == true)
+        //    {
+        //        return false;
+        //    }
+        //    return true;
+        //}
+
+
         public async Task<ServiceResponse<BookingViewDTO>> CreateBookingAsync(BookingCreateDTO createdto)
         {
             var response = new ServiceResponse<BookingViewDTO>();
 
             try
             {
+                string bookingType = _unitOfWork.BookingTypeRepository.GetByIdAsync((int)createdto.BookingTypeID).Result.name;
+                var booking = new Booking();
+                if (bookingType.Equals(BookingTypeEnum.Permanent.ToString()))
+                {
+                    booking = _mapper.Map<Booking>(createdto);
+                    List<BookingDetail> bookingDetails = new List<BookingDetail>();
+                   
+                        var scheduleIDs = new List<int>();
 
+                        for (int i = 0; i < 30; i++)
+                        {
+                            var schedule = new Schedule
+                            {
+                                price = createdto.Price,
+                                status = true,
+                                date = createdto.BookingDetailParentCreateDTO.Date.Value.AddDays(i),
+                                courtID = createdto.BookingDetailParentCreateDTO.courtID,
+                                slotID = createdto.BookingDetailParentCreateDTO.slotID,
+                                };
 
-                var entity = _mapper.Map<Booking>(createdto);
+                                await _unitOfWork.ScheduleRepository.AddAsync(schedule);
+                                await _unitOfWork.SaveChangeAsync();
+                                bookingDetails.Add( new BookingDetail { 
+                                    IsActive = true
+                                    ,scheduleID = schedule.Id
+                                    ,Date = createdto.BookingDetailParentCreateDTO.Date.Value
+                                    ,Name = "Permanent"
+                                    ,bookingID = booking.Id
+                                });
+                        } 
+                        booking.StatusPayment = false;
+                        booking.TotalPrice = 30 * createdto.Price;
+                        booking.BookingDetails = bookingDetails;
 
-                await _unitOfWork.BookingRepository.AddAsync(entity);
+                }
+                if (bookingType.Equals(BookingTypeEnum.Daily.ToString()))
+                {
+                    booking = _mapper.Map<Booking>(createdto);
+                    var DailyDTO = _mapper.Map<BookingDetailDailyCreateDTO>(createdto.BookingDetailParentCreateDTO);
+                    booking.BookingDetails = new List<BookingDetail>{ _mapper.Map<BookingDetail>(DailyDTO) };  
+                }
+                if (bookingType.Equals(BookingTypeEnum.Flexible.ToString()))
+                {
+                    booking = _mapper.Map<Booking>(createdto);
+                    var DailyDTO = _mapper.Map<BookingDetailFlexibleCreateDTO>(createdto.BookingDetailParentCreateDTO);
+                    booking.BookingDetails = new List<BookingDetail> { _mapper.Map<BookingDetail>(DailyDTO) };
+                }
+                
+
+                await _unitOfWork.BookingRepository.AddAsync(booking);
 
                 if (await _unitOfWork.SaveChangeAsync() > 0)
                 {
-                    Booking entityAfterAdd = await _unitOfWork.BookingRepository.GetByIdAsync(entity.Id, x => x.User, x => x.BookingType);
-
-                    if (entityAfterAdd != null)
-                    {
-                        var mapperdto = _mapper.Map<BookingViewDTO>(entityAfterAdd);
-                        mapperdto.UserName = entityAfterAdd.User?.name;
-                        mapperdto.BookingTypeName = entityAfterAdd.BookingType?.name;
-
-                        response.Data = mapperdto;
-                        response.Success = true;
-                        response.Message = "Created new booking successfully";
-                    }
-                    else
-                    {
-                        response.Success = false;
-                        response.Message = "Booking created but not found in the database.";
-                        response.Error = "Booking retrieval failed.";
-                    }
-                }
-                else
-                {
-                    response.Success = false;
-                    response.Message = "Failed to create new booking.";
-                    response.Error = "Database save failed.";
-                }
-            }
-            catch (Exception ex)
-            {
-                response.Success = false;
-                response.Message = "An error occurred while creating the booking.";
-                response.ErrorMessages = new List<string> { ex.Message };
-            }
-
-            return response;
-        }
-
-        private bool checkScheduleIsBooking(int ScheduleId) 
-        {
-            return true;
-        }
-
-        private bool Validate(BookingCreateDTO createdto)
-        {
-            bool flag = true;
-            if(createdto == null)
-            { 
-                flag = false;
-            }
-            //else if(_unitOfWork createdto.BookingDetailParentCreateDTO.scheduleID) {
-
-            //}
-
-            return true;
-        }
-
-        public async Task<ServiceResponse<BookingViewDTO>> CreateBookingAsync(BookingCreateDTO createdto, int bookingTypeId)
-        {
-            var response = new ServiceResponse<BookingViewDTO>();
-
-            try
-            {
-                var bookingType = _unitOfWork.BookingTypeRepository.GetByIdAsync(bookingTypeId);
-                if (bookingType.Equals(BookingTypeEnum.Permanent))
-                {
-                    
-                }
-                if (bookingType.Equals(BookingTypeEnum.Daily))
-                {
-
-                }
-                if (bookingType.Equals(BookingTypeEnum.Flexible))
-                {
-
-                }
-                var entity = _mapper.Map<Booking>(createdto);
-
-                await _unitOfWork.BookingRepository.AddAsync(entity);
-
-                if (await _unitOfWork.SaveChangeAsync() > 0)
-                {
-                    Booking entityAfterAdd = await _unitOfWork.BookingRepository.GetByIdAsync(entity.Id, x => x.User, x => x.BookingType);
+                    Booking entityAfterAdd = await _unitOfWork.BookingRepository.GetByIdAsync(booking.Id, x => x.User, x => x.BookingType);
 
                     if (entityAfterAdd != null)
                     {

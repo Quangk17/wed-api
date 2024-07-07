@@ -43,15 +43,16 @@ D:\SWD392\Git\SWD392_BCM\SWD_BCM\Domain\obj\Debug\net8.0\Domain.dll
 D:\SWD392\Git\SWD392_BCM\SWD_BCM\Domain\obj\Debug\net8.0\refint\Domain.dll
 D:\SWD392\Git\SWD392_BCM\SWD_BCM\Domain\obj\Debug\net8.0\Domain.pdb
 D:\SWD392\Git\SWD392_BCM\SWD_BCM\Domain\obj\Debug\net8.0\ref\Domain.dll
-D:\SWD392\Git Backend\wed-api\SWD_BCM\Domain\bin\Debug\net8.0\Domain.deps.json
-D:\SWD392\Git Backend\wed-api\SWD_BCM\Domain\bin\Debug\net8.0\Domain.dll
-D:\SWD392\Git Backend\wed-api\SWD_BCM\Domain\bin\Debug\net8.0\Domain.pdb
-D:\SWD392\Git Backend\wed-api\SWD_BCM\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
-D:\SWD392\Git Backend\wed-api\SWD_BCM\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
-D:\SWD392\Git Backend\wed-api\SWD_BCM\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
-D:\SWD392\Git Backend\wed-api\SWD_BCM\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
-D:\SWD392\Git Backend\wed-api\SWD_BCM\Domain\obj\Debug\net8.0\Domain.sourcelink.json
-D:\SWD392\Git Backend\wed-api\SWD_BCM\Domain\obj\Debug\net8.0\Domain.dll
-D:\SWD392\Git Backend\wed-api\SWD_BCM\Domain\obj\Debug\net8.0\refint\Domain.dll
-D:\SWD392\Git Backend\wed-api\SWD_BCM\Domain\obj\Debug\net8.0\Domain.pdb
-D:\SWD392\Git Backend\wed-api\SWD_BCM\Domain\obj\Debug\net8.0\ref\Domain.dll
+D:\C#_Learn\Project\wed-api\SWD_BCM\Domain\bin\Debug\net8.0\Domain.deps.json
+D:\C#_Learn\Project\wed-api\SWD_BCM\Domain\bin\Debug\net8.0\Domain.dll
+D:\C#_Learn\Project\wed-api\SWD_BCM\Domain\bin\Debug\net8.0\Domain.pdb
+D:\C#_Learn\Project\wed-api\SWD_BCM\Domain\obj\Debug\net8.0\Domain.csproj.AssemblyReference.cache
+D:\C#_Learn\Project\wed-api\SWD_BCM\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\C#_Learn\Project\wed-api\SWD_BCM\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+D:\C#_Learn\Project\wed-api\SWD_BCM\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+D:\C#_Learn\Project\wed-api\SWD_BCM\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+D:\C#_Learn\Project\wed-api\SWD_BCM\Domain\obj\Debug\net8.0\Domain.sourcelink.json
+D:\C#_Learn\Project\wed-api\SWD_BCM\Domain\obj\Debug\net8.0\Domain.dll
+D:\C#_Learn\Project\wed-api\SWD_BCM\Domain\obj\Debug\net8.0\refint\Domain.dll
+D:\C#_Learn\Project\wed-api\SWD_BCM\Domain\obj\Debug\net8.0\Domain.pdb
+D:\C#_Learn\Project\wed-api\SWD_BCM\Domain\obj\Debug\net8.0\ref\Domain.dll

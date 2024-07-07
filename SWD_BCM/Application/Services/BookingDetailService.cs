@@ -1,6 +1,7 @@
 ﻿using Application.Interfaces;
 using Application.ServiceResponses;
 using Application.ViewModels.BookingDetailDTOs;
+using Application.ViewModels.BookingDTOs;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
@@ -20,10 +21,6 @@ namespace Application.Services
             _mapper = mapper;
         }
 
-        public Task<ServiceResponse<BookingDetailViewDTO>> CreateBookingDetailAsync(BookingDetailCreateDTO createdto)
-        {
-
-        }
 
         public Task<ServiceResponse<BookingDetailViewDTO>> GetBookingDetailByIdAsync(int Id)
         {

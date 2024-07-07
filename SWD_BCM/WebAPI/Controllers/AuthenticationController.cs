@@ -1,5 +1,6 @@
 ﻿using Application.Interfaces;
 using Application.ViewModels.AccountDTOs;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,9 +14,9 @@ namespace WebAPI.Controllers
         {
             _authenticationService = authenticationService;
         }
-
+       
         [HttpPost]
-        public async Task<IActionResult> RegisterAsync(RegisterAccountDTO registerObject)
+        public async Task<IActionResult> RegisterAsync( RegisterAccountDTO registerObject)
         {
             var result = await _authenticationService.RegisterAsync(registerObject);
 
@@ -28,7 +29,7 @@ namespace WebAPI.Controllers
                 return Ok(result);
             }
         }
-
+        
         [HttpPost]
         public async Task<IActionResult> LoginAsync(AuthenAccountDTO loginObject)
         {

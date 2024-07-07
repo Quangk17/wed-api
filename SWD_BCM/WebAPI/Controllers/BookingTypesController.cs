@@ -1,5 +1,6 @@
 ﻿using Application.Interfaces;
 using Application.ViewModels.BookingTypeDTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -32,7 +33,7 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
 
-        //[Authorize (Roles = "Manager")]
+        
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -51,7 +52,7 @@ namespace WebAPI.Controllers
             return Ok(c);
         }
 
-        //[Authorize(Roles = "Manager")]
+        
         [HttpPut("{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

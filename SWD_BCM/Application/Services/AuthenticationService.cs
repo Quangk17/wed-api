@@ -52,11 +52,13 @@ namespace Application.Services
                     response.Message = "Please confirm via link in your mail";
                     return response;
                 }
+                var rolename = await _unitOfWork.AccountRepository.GetRoleNameByRoleId((int) user.roleID);
 
                 var token = user.GenerateJsonWebToken(
                     _configuration,
                     _configuration.JWTSection.SecretKey,
-                    _currentTime.GetCurrentTime()
+                    _currentTime.GetCurrentTime(),
+                    rolename.RoleName
                 );
 
                 response.Success = true;
@@ -85,7 +87,7 @@ namespace Application.Services
             var response = new ServiceResponse<AccountDTO>();
             try
             {
-                bool? exist = await _unitOfWork.AccountRepository.CheckEmailNameExited(registerAccountDTO.email);
+                var exist = await _unitOfWork.AccountRepository.CheckEmailNameExisted(registerAccountDTO.email);
                 if (exist != null)
                 {
                     response.Success = false;
@@ -95,9 +97,11 @@ namespace Application.Services
                 var user = _mapper.Map<User>(registerAccountDTO);
                 // Tạo token ngẫu nhiên
                 user.ConfirmationToken = Guid.NewGuid().ToString();
-                user.roleID = 2;
+                
+                user.roleID = 5;
                 await _unitOfWork.AccountRepository.AddAsync(user);
                 var confirmationLink = $"https://localhost:7017/swagger/confirm?token={user.ConfirmationToken}";
+
                 // Gửi email xác nhận
                 var emailSent = await SendEmail.SendConfirmationEmail(user.email, confirmationLink);
                 if (!emailSent)

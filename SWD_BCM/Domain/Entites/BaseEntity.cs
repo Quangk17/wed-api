@@ -22,7 +22,7 @@ namespace Domain.Entites
 
         public int? DeleteBy { get; set; }
 
-        public bool IsDeleted { get; set; }
+        public bool IsDeleted { get; set; } = false;
 
     }
 }

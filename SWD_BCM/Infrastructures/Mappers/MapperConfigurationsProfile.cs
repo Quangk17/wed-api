@@ -1,9 +1,15 @@
 ﻿using Application.Commons;
 using Application.ViewModels.AccountDTOs;
 using Application.ViewModels.BookingDetailDTOs;
+using Application.ViewModels.CourtDTOs;
+using Application.ViewModels.RoleDTOs;
+using Application.ViewModels.ScheduleDTOs;
+using Application.ViewModels.SlotDTOs;
+using Application.ViewModels.StoreDTOs;
 using Application.ViewModels.BookingDTOs;
 using Application.ViewModels.BookingTypeDTOs;
 using Application.ViewModels.InvoiceDTOs;
+
 using AutoMapper;
 using Domain.Entites;
 
@@ -29,17 +35,53 @@ namespace Infrastructures.Mappers
 
             CreateMap<BookingType, BookingDetailViewDTO>().ReverseMap();
             
-            CreateMap<BookingType, BookingDetailUpdateDTO>().ReverseMap();
-            CreateMap<BookingType, BookingDetailDailyCreateDTO>().ReverseMap();
-            CreateMap<BookingType, BookingDetailFlexibleCreateDTO>().ReverseMap();
-            CreateMap<BookingType, BookingDetailPermanentCreateDTO>().ReverseMap();
+            CreateMap<BookingDetail, BookingDetailParentCreateDTO>().ReverseMap();
+            CreateMap<BookingDetail, BookingDetailDailyCreateDTO>().ReverseMap();
+            CreateMap<BookingDetail, BookingDetailFlexibleCreateDTO>().ReverseMap();
+            CreateMap<BookingDetail, BookingDetailPermanentCreateDTO>().ReverseMap();
+
+            CreateMap<BookingDetailParentCreateDTO, BookingDetailDailyCreateDTO>().ReverseMap();
+            CreateMap<BookingDetailParentCreateDTO, BookingDetailFlexibleCreateDTO>().ReverseMap();
+            CreateMap<BookingDetailParentCreateDTO, BookingDetailPermanentCreateDTO>().ReverseMap();
 
 
             CreateMap<Invoice, InvoiceViewDTO>().ReverseMap();
             CreateMap<Invoice, InvoiceCreateDTO>().ReverseMap();
             CreateMap<Invoice, InvoiceUpdateDTO>().ReverseMap();
+            // mapping viewdto
+            CreateMap<Role, RoleDTO>().ReverseMap();
+
+            CreateMap<Store, StoreDTO>().ReverseMap();
+
+            CreateMap<Court, CourtDTO>().ReverseMap();
+
+            CreateMap<Slot, SlotDTO>().ReverseMap();
+
+            CreateMap<Schedule, ScheduleDTO>().ReverseMap();
 
             CreateMap(typeof(Pagination<>), typeof(Pagination<>));
+
+            // mapping createdto
+            CreateMap<RoleCreateDTO, Role>().ReverseMap();
+            CreateMap<StoreCreateDTO, Store>().ReverseMap();
+            CreateMap<CourtCreateDTO, Court>().ReverseMap();
+            CreateMap<ScheduleCreateDTO, Schedule>().ReverseMap();
+            CreateMap<SlotCreateDTO, Slot>().ReverseMap();
+
+            //  mapping updatedto
+            CreateMap<RoleUpdateDTO, Role>().ReverseMap();
+            CreateMap<StoreUpdateDTO, Store>().ReverseMap();
+            CreateMap<CourtUpdateDTO, Court>().ReverseMap();
+            CreateMap<ScheduleUpdateDTO, Schedule>().ReverseMap();
+            CreateMap<SlotUpdateDTO, Slot>().ReverseMap();
+
+
+
+
+
+
+
+
         }
 
     }
