@@ -1,19 +1,42 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.ViewModels.BookingDetailDTOs
 {
-    public class BookingDetailCreateDTO
+
+    public class BookingDetailParentCreateDTO
     {
-        public bool IsActive { get; set; }
-        public DateTime Date { get; set; }
+        public bool? IsActive { get; set; }
+        public DateTime? Date { get; set; }
         public string? Name { get; set; }
         public float? amountHour { get; set; }
         public int? bookingID { get; set; }
         public int? scheduleID { get; set; }
+        public int? courtID { get; set; }
+        public int? slotID { get; set; }
+    }
+    public class BookingDetailPermanentCreateDTO
+    {
+        public bool? IsActive { get; set; }
+        public DateTime? Date { get; set; }
+        public string? Name { get; set; }
+        public int? BookingID { get; set; }
+        public int? ScheduleID { get; set; }
+    }
 
+    public class BookingDetailDailyCreateDTO
+    {
+        public bool? IsActive { get; set; }
+        public DateTime? Date { get; set; }
+        public string? Name { get; set; }
+        public int? BookingID { get; set; }
+        public int? ScheduleID { get; set; }
+    }
+
+    public class BookingDetailFlexibleCreateDTO
+    {
+        public bool? IsActive { get; set; }
+        public string? Name { get; set; }
+        public float? AmountHour { get; set; }
+        public int? BookingID { get; set; }
     }
 }

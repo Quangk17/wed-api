@@ -1,12 +1,11 @@
 ﻿using Application.Commons;
 using Application.ViewModels.AccountDTOs;
-
+using Application.ViewModels.BookingDetailDTOs;
 using Application.ViewModels.CourtDTOs;
 using Application.ViewModels.RoleDTOs;
 using Application.ViewModels.ScheduleDTOs;
 using Application.ViewModels.SlotDTOs;
 using Application.ViewModels.StoreDTOs;
-
 using Application.ViewModels.BookingDTOs;
 using Application.ViewModels.BookingTypeDTOs;
 using Application.ViewModels.InvoiceDTOs;
@@ -33,6 +32,18 @@ namespace Infrastructures.Mappers
             CreateMap<BookingType, BookingTypeViewDTO>().ReverseMap();
             CreateMap<BookingType, BookingTypeCreateDTO>().ReverseMap();
             CreateMap<BookingType, BookingTypeUpdateDTO>().ReverseMap();
+
+            CreateMap<BookingType, BookingDetailViewDTO>().ReverseMap();
+            
+            CreateMap<BookingDetail, BookingDetailParentCreateDTO>().ReverseMap();
+            CreateMap<BookingDetail, BookingDetailDailyCreateDTO>().ReverseMap();
+            CreateMap<BookingDetail, BookingDetailFlexibleCreateDTO>().ReverseMap();
+            CreateMap<BookingDetail, BookingDetailPermanentCreateDTO>().ReverseMap();
+
+            CreateMap<BookingDetailParentCreateDTO, BookingDetailDailyCreateDTO>().ReverseMap();
+            CreateMap<BookingDetailParentCreateDTO, BookingDetailFlexibleCreateDTO>().ReverseMap();
+            CreateMap<BookingDetailParentCreateDTO, BookingDetailPermanentCreateDTO>().ReverseMap();
+
 
             CreateMap<Invoice, InvoiceViewDTO>().ReverseMap();
             CreateMap<Invoice, InvoiceCreateDTO>().ReverseMap();

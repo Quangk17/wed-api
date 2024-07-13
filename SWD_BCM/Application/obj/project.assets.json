@@ -1576,35 +1576,59 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\quang\\.nuget\\packages\\": {}
+<<<<<<< HEAD
+    "C:\\Users\\ROG\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+=======
+    "C:\\Users\\PC\\.nuget\\packages\\": {}
+>>>>>>> d889947bbbe88255f068d8ce22f87871177f4e09
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\C#_Learn\\Project\\wed-api\\SWD_BCM\\Application\\Application.csproj",
+<<<<<<< HEAD
+      "projectUniqueName": "D:\\SWD392\\Git Backend\\wed-api\\SWD_BCM\\Application\\Application.csproj",
       "projectName": "Application",
-      "projectPath": "D:\\C#_Learn\\Project\\wed-api\\SWD_BCM\\Application\\Application.csproj",
-      "packagesPath": "C:\\Users\\quang\\.nuget\\packages\\",
-      "outputPath": "D:\\C#_Learn\\Project\\wed-api\\SWD_BCM\\Application\\obj\\",
+      "projectPath": "D:\\SWD392\\Git Backend\\wed-api\\SWD_BCM\\Application\\Application.csproj",
+      "packagesPath": "C:\\Users\\ROG\\.nuget\\packages\\",
+      "outputPath": "D:\\SWD392\\Git Backend\\wed-api\\SWD_BCM\\Application\\obj\\",
+=======
+      "projectUniqueName": "D:\\FPT\\SWD_BCM\\Application\\Application.csproj",
+      "projectName": "Application",
+      "projectPath": "D:\\FPT\\SWD_BCM\\Application\\Application.csproj",
+      "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+      "outputPath": "D:\\FPT\\SWD_BCM\\Application\\obj\\",
+>>>>>>> d889947bbbe88255f068d8ce22f87871177f4e09
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\quang\\AppData\\Roaming\\NuGet\\NuGet.Config",
+<<<<<<< HEAD
+        "C:\\Users\\ROG\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+=======
+        "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config"
+>>>>>>> d889947bbbe88255f068d8ce22f87871177f4e09
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\C#_Learn\\Project\\wed-api\\SWD_BCM\\Domain\\Domain.csproj": {
-              "projectPath": "D:\\C#_Learn\\Project\\wed-api\\SWD_BCM\\Domain\\Domain.csproj"
+<<<<<<< HEAD
+            "D:\\SWD392\\Git Backend\\wed-api\\SWD_BCM\\Domain\\Domain.csproj": {
+              "projectPath": "D:\\SWD392\\Git Backend\\wed-api\\SWD_BCM\\Domain\\Domain.csproj"
+=======
+            "D:\\FPT\\SWD_BCM\\Domain\\Domain.csproj": {
+              "projectPath": "D:\\FPT\\SWD_BCM\\Domain\\Domain.csproj"
+>>>>>>> d889947bbbe88255f068d8ce22f87871177f4e09
             }
           }
         }
@@ -1613,11 +1637,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -1664,12 +1683,22 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[8.0.5, 8.0.5]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+<<<<<<< HEAD
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.106/PortableRuntimeIdentifierGraph.json"
+=======
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
+>>>>>>> d889947bbbe88255f068d8ce22f87871177f4e09
       }
     }
   }

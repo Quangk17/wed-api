@@ -24,7 +24,7 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
 
-       // [Authorize (Roles = "Manager")]
+        //[Authorize (Roles = "Manager")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

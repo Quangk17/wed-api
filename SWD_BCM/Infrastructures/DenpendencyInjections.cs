@@ -31,7 +31,11 @@ namespace Infrastructures
             services.AddScoped<IBookingTypeRepository, BookingTypeRepository>();
             services.AddScoped<IInvoiceRepository, InvoiceRepository>();
             services.AddScoped<IBookingDetailRepository, BookingDetailRepository>();
-            
+
+            services.AddScoped<IBookingTypeService, BookingTypeService>();
+            services.AddScoped<IBookingService, BookingService>();
+            services.AddScoped<IBookingDetailService, BookingDetailService>();
+            services.AddScoped<IInvoiceService, InvoiceService>();
 
 
 
