@@ -66,5 +66,22 @@ namespace WebAPI.Controllers
             return Ok(c);
         }
 
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> AddAccountAsync([FromBody] AccountAddDTO addDto)
+        {
+            if (addDto == null)
+            {
+                return BadRequest();
+            }
+            var c = await _userService.AddAccountAsync(addDto);
+            if (!c.Success)
+            {
+                return BadRequest(c);
+            }
+            return Ok(c);
+        }
     }
 }

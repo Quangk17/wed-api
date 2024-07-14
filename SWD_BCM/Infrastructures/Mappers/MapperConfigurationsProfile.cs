@@ -24,6 +24,7 @@ namespace Infrastructures.Mappers
             CreateMap<User, AuthenAccountDTO>().ReverseMap();
             CreateMap<User, RegisterAccountDTO>().ReverseMap();
             CreateMap<User, AccountUpdateDTO>().ReverseMap();
+            CreateMap<User, AccountAddDTO>(). ReverseMap();
 
             CreateMap<Booking, BookingViewDTO>().ReverseMap();
             CreateMap<Booking, BookingCreateDTO>().ReverseMap();

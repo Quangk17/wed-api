@@ -21,6 +21,40 @@ namespace Application.Services
             _mapper = mapper;
         }
 
+        public async Task<ServiceResponse<AccountDTO>> AddAccountAsync(AccountAddDTO AccountAddDTO)
+        {
+            var reponse = new ServiceResponse<AccountDTO>();
+
+            try
+            {
+                var entity = _mapper.Map<User>(AccountAddDTO);
+
+                await _unitOfWork.AccountRepository.AddAsync(entity);
+
+                if (await _unitOfWork.SaveChangeAsync() > 0)
+                {
+                    reponse.Data = _mapper.Map<AccountDTO>(entity);
+                    reponse.Success = true;
+                    reponse.Message = "Create new Account successfully";
+                    return reponse;
+                }
+                else
+                {
+                    reponse.Success = false;
+                    reponse.Message = "Create new Account fail";
+                    return reponse;
+                }
+            }
+            catch (Exception ex)
+            {
+                reponse.Success = false;
+                reponse.ErrorMessages = new List<string> { ex.Message };
+                return reponse;
+            }
+
+            return reponse;
+        }
+
         public async Task<ServiceResponse<AccountDTO>> DeleteAccountAsync(int id)
         {
             var _response = new ServiceResponse<AccountDTO>();

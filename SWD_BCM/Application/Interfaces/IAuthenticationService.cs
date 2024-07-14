@@ -7,6 +7,7 @@ namespace Application.Interfaces
     {
         public Task<ServiceResponse<AccountDTO>> RegisterAsync(RegisterAccountDTO registerAccountDTO);
         public Task<ServiceResponse<string>> LoginAsync(AuthenAccountDTO accountDto);
+        
     }
 
 }
