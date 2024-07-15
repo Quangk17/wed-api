@@ -33,7 +33,9 @@ namespace Infrastructures.Repositories
                 query = query.Include(include);
             }
 
-            return  query.ToListAsync();
+            query = query.Where(entity => entity.IsDeleted == false);
+
+            return query.ToListAsync();
         }
 
         public async Task<TEntity?> GetByIdAsync(int id, params Expression<Func<TEntity, object>>[] includes)

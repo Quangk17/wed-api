@@ -16,7 +16,7 @@ namespace WebAPI.Controllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> ViewAllOrder()
+        public async Task<IActionResult> ViewAllAccount()
         {
             var result = await _userService.GetAccountsAsync();
             return Ok(result);
