@@ -132,9 +132,49 @@ namespace Application.Services
             }
         }
 
-        public Task<ServiceResponse<List<StoreDTO>>> SearchStoreByNameAsync(string name)
+        public async Task<ServiceResponse<List<StoreDTO>>> SearchStoreByNameAsync(string name)
         {
-            throw new NotImplementedException();
+            var _response = new ServiceResponse<List<StoreDTO>>();
+            List<StoreDTO> storeDTOs = new List<StoreDTO>();
+
+            try
+            {
+                var store = await _unitOfWork.StoreRepository.GetStoresAsync();
+                var storeFilter = store.Where(x => x.name.ToLower().Contains(name.ToLower()));
+                if (storeFilter != null)
+                {
+                    foreach (var a in storeFilter)
+                    {
+                        if (a.IsDeleted == false)
+                        {
+                            storeDTOs.Add(_mapper.Map<StoreDTO>(a));
+                        }
+                    }
+                    if (storeDTOs.Any() == true)
+                    {
+                        _response.Data = storeDTOs;
+                        _response.Success = true;
+                        _response.Message = "Found Store By Name";
+                    }
+                    else
+                    {
+                        _response.Success = false;
+                        _response.Message = "Not Found Store";
+                    }
+                }
+                else
+                {
+                    _response.Success = false;
+                    _response.Message = "Don't Have Any Store ";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                _response.Success = false;
+                _response.ErrorMessages = new List<string> { ex.Message };
+            }
+            return _response;
         }
 
         public async Task<ServiceResponse<StoreDTO>> UpdateStoreAsync(int id, StoreUpdateDTO updateDto)

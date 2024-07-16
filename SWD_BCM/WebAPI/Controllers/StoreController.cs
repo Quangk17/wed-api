@@ -70,5 +70,14 @@ namespace WebAPI.Controllers
             }
             return Ok(c);
         }
+
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> SearchStoreByName(string name)
+        {
+            var result = await _storeService.SearchStoreByNameAsync(name);
+            return Ok(result);
+        }
     }
 }
