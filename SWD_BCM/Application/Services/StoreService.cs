@@ -100,7 +100,7 @@ namespace Application.Services
             List<StoreDTO> StoreDTOs = new List<StoreDTO>();
             try
             {
-                var a = await _unitOfWork.StoreRepository.GetStoresAsync();
+                var a = await _unitOfWork.StoreRepository.GetAllAsync();
                 foreach (var ac in a)
                 {
                     var aaftermapper = _mapper.Map<StoreDTO>(ac);
